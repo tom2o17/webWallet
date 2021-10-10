@@ -1,4 +1,3 @@
-//https://www.youtube.com/watch?v=pc0TSi5nI_o
 import useStoreApi  from './storeApi';
 import useWeb3 from './getWeb3';
 import './App.css';
