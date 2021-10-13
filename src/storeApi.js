@@ -16,10 +16,18 @@ const useStoreApi = () => {
         setAddress: newAddress => {
             dispatch({
                 type: 'NEW-ADDRESS',
-                newAddress,
-                message: "New account added successfully!"
+                newAddress
+                //message: "New account added successfully!"
+            });
+        },
+        
+        setMessage: (newMessage) => {
+            dispatch({
+                type: 'NEW-MESSAGE',
+                newMessage
             });
         }
+       
     };
 };
 

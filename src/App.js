@@ -1,3 +1,4 @@
+//https://www.youtube.com/watch?v=pc0TSi5nI_o
 import useStoreApi  from './storeApi';
 import useWeb3 from './getWeb3';
 import './App.css';
@@ -656,7 +657,7 @@ function App() {
   const contractAddress = '0x183835A5C700d60D0643696B79Ed81c4ac230E97';
   
 
-  const {address, balance, message, setBalance, setAddress} = useStoreApi();
+  const {address, balance, message, setBalance, setAddress, setMessage} = useStoreApi();
   const web3 = useWeb3();
   
 
@@ -670,15 +671,8 @@ function App() {
     }
   };
 
-  const setUserBalance = async (fromAddress) => {
-    await web3.eth.getBalance(fromAddress).then(value => {
-      const credit = web3.utils.fromWei(value, 'ether')
-      setBalance(credit)
-    });
-  };
-
   const getKoinBal = async (fromAddress) => {
-    console.log('test')
+    //console.log('test')
     const contract = await new web3.eth.Contract(abi,contractAddress)
     var meth = contract.methods;
     const kredit = await meth.balanceOf(fromAddress).call()
@@ -695,8 +689,18 @@ function App() {
       console.log(e.target[0].value)
       const amount = e.target[0].value;
       const recipient = e.target[1].value;
-      await meth.transfer(recipient, web3.utils.toWei(amount,'ether')).send({from: address}).then(console.log)
+      //const txn = await meth.transfer(recipient, web3.utils.toWei(amount,'ether')).send({from: address}).then(e, setMessage(e.blockHash));
+      await meth.transfer(recipient, web3.utils.toWei(amount,'ether')).send({from: address}).on('transactionHash', function(Hash){
+        //console.log(Hash)
+
+        // Prints the Txn Hash in the message field
+        setMessage(Hash)
+      });
       getKoinBal(address)
+      //console.log(JSON.stringify(txn));
+      //console.log(typeof txn);
+      //setMessage(JSON.stringify(txn));
+      //console.log(message)
     } else {
       console.log('Please connect Wallet')
     }
@@ -710,7 +714,7 @@ function App() {
       
       <header className='App-header'>
       
-      <a href='https://www.koinos.io/'><button>Learn More</button></a>
+      <button onClick={() =>setMessage('test')}>Learn More</button>
       <br></br>
       <font size="3"> Your Address: {address}</font>
       <br></br>
@@ -756,8 +760,16 @@ function App() {
           </button>
       </form>
     </MuiThemeProvider> 
+
+    { address ? (
+        <>
+        <br></br>
+        <font size="3"> Txn-Hash: </font>
+        <font size='3'>{message}</font>
+        </>
+      ) : null}
+
       </header>
-      
     </div>
   );
 }
