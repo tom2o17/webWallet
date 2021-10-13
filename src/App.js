@@ -652,7 +652,7 @@ function App() {
 
   const contractAddress = '0x183835A5C700d60D0643696B79Ed81c4ac230E97'
 
-  const { address, balance, message, setBalance, setAddress } = useStoreApi()
+  const { address, balance, message, setBalance, setAddress, setMessage } = useStoreApi()
   const web3 = useWeb3()
 
   const setUserAccount = async () => {
@@ -673,7 +673,7 @@ function App() {
   }
 
   const getKoinBal = async (fromAddress) => {
-    console.log('test')
+    //console.log('test')
     const contract = await new web3.eth.Contract(abi, contractAddress)
     var meth = contract.methods
     const kredit = await meth.balanceOf(fromAddress).call()
@@ -693,7 +693,9 @@ function App() {
       await meth
         .transfer(recipient, web3.utils.toWei(amount, 'ether'))
         .send({ from: address })
-        .then(console.log)
+        .on('transactionHash', function(hash){
+          setMessage(hash);
+        });
       getKoinBal(address)
     } else {
       console.log('Please connect Wallet')
@@ -717,7 +719,7 @@ function App() {
             <div> Your Address: {address}</div>
             {address ? (
               <>
-                <code> Balance: {balance} tKoin-ERC20</code>
+                <code> Balance: {balance} (ERC-20) Koin</code>
               </>
             ) : null}
             <p></p>
@@ -746,6 +748,10 @@ function App() {
         </div>
         <div className="footer">
           <a href="https://www.koinos.io/">Powered by KOINOS</a>
+          <br>
+          </br>          
+          <font size='1' >Txn-Hash: {message}</font> 
+          
         </div>
       </header>
       <div className="side-image">

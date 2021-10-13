@@ -15,6 +15,11 @@ const reducer = (state, action) => {
                 address: action.newAddress,
                 message: action.message
             }
+            case "NEW-MESSAGE":
+                return {
+                    ...state,
+                    message: action.newMessage
+                }
             case "SET-BALANCE":
                 return {
                     ...state,
