@@ -1,4 +1,4 @@
-//https://www.youtube.com/watch?v=pc0TSi5nI_o
+
 import useStoreApi  from './storeApi';
 import useWeb3 from './getWeb3';
 import './App.css';
@@ -689,17 +689,6 @@ function App() {
     if(address != null ){const contract = await new web3.eth.Contract(abi,contractAddress)
       var meth = contract.methods;
       console.log(e.target[0].value)
-<<<<<<< Updated upstream
-      const amount = e.target[0].value;
-      const recipient = e.target[1].value;
-      //const txn = await meth.transfer(recipient, web3.utils.toWei(amount,'ether')).send({from: address}).then(e, setMessage(e.blockHash));
-      await meth.transfer(recipient, web3.utils.toWei(amount,'ether')).send({from: address}).on('transactionHash', function(Hash){
-        //console.log(Hash)
-
-        // Prints the Txn Hash in the message field
-        setMessage(Hash)
-      });
-=======
       const amount = e.target[0].value
       const recipient = e.target[1].value
       // if statement to test valid address|| Look up substring/char js 
@@ -718,7 +707,6 @@ function App() {
       } catch(error) {
         setMessage('Invalid address!')
       }
->>>>>>> Stashed changes
       getKoinBal(address)
       //console.log(JSON.stringify(txn));
       //console.log(typeof txn);
@@ -792,21 +780,6 @@ function App() {
         </>
       ) : null}
 
-<<<<<<< Updated upstream
-=======
-              <br></br>
-              <button>Send Crypto</button>
-            </form>
-          </MuiThemeProvider>
-        </div>
-        <div className="footer">
-          <a href="https://www.koinos.io/">Powered by KOINOS</a>
-          <br>
-          </br>          
-          <font size='1' >{message}</font> 
-          
-        </div>
->>>>>>> Stashed changes
       </header>
     </div>
   );
