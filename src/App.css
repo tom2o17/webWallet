@@ -1,31 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+
+body {
+  margin: 0;
+  background-color: #282c34;
+  font-family: 'Quicksand', sans-serif;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+}
+a,
+a:visited {
+  color: #c797f6;
+  font-size: .4em;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  width: 100vw;
+  height: 100vh;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.side-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 0 5em;
 }
-
 .App-link {
   color: #61dafb;
+}
+
+
+.heading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.heading button {
+  color: #E5D11B;
+  border: 1px solid #E5D11B;
+  background: none;
+  padding: .7em 2em;
+  text-transform: uppercase;
+}
+.top-button {
+  display: flex;
+  justify-content: center;
+}
+.greeting {
+  text-transform: uppercase;
+  padding-top: 3em;
+}
+.address {
+  font-size: .7em;
+}
+.form {
+  padding-left: 2em;
+  margin-bottom: 4em;
+}
+.form button {
+  background: #07A07C;
+border-radius: 4px;
+padding: .5em 2em;
+width: 100%;
+color: white;
+border: none;
+margin-top: 2rem;
+}
+input {
+  color: white !important;
+  text-transform: uppercase;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
