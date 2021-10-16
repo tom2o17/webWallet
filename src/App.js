@@ -23,19 +23,13 @@ function App() {
     }
   }
 
-  const setUserBalance = async (fromAddress) => {
-    await web3.eth.getBalance(fromAddress).then((value) => {
-      const credit = web3.utils.fromWei(value, 'ether')
-      setBalance(credit)
-    })
-  }
-
   const getKoinBal = async (fromAddress) => {
     //console.log('test')
     const contract = await new web3.eth.Contract(abi, contractAddress)
     var meth = contract.methods
-    const kredit = await meth.balanceOf(fromAddress).call()
-    setBalance(web3.utils.fromWei(kredit, 'ether'))
+    const kredit = await meth.balanceOf(fromAddress).call();
+    kredit = kredit * 10^8;
+    setBalance(kredit);
 
     console.log(kredit)
   }
@@ -48,11 +42,12 @@ function App() {
       console.log(e.target[0].value)
       const amount = e.target[0].value
       const recipient = e.target[1].value
+      amount = amount * 10^8;
      
       ;
       try {
         await meth
-        .transfer(recipient, web3.utils.toWei(amount, 'ether'))
+        .transfer(amount)
         .send({ from: address })
         .on('transactionHash', function(hash){
           setMessage(`Txn-Hash: ${hash}`);
