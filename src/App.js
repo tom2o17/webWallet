@@ -27,9 +27,9 @@ function App() {
     //console.log('test')
     const contract = await new web3.eth.Contract(abi, contractAddress)
     var meth = contract.methods
-    const kredit = await meth.balanceOf(fromAddress).call();
-    kredit = kredit * 10^8;
-    setBalance(kredit);
+    const kredit = await meth.balanceOf(fromAddress).call()
+    const kredit = kredit * (10^8);
+    setBalance(kredit)
 
     console.log(kredit)
   }
@@ -42,7 +42,7 @@ function App() {
       console.log(e.target[0].value)
       const amount = e.target[0].value
       const recipient = e.target[1].value
-      amount = amount * 10^8;
+      amount = amount * 10^8
      
       ;
       try {
