@@ -35,7 +35,8 @@ function App() {
     const contract = await new web3.eth.Contract(abi, contractAddress)
     var meth = contract.methods
     const kredit = await meth.balanceOf(fromAddress).call()
-    setBalance(web3.utils.fromWei(kredit, 'ether'))
+    const kredit = kredit * (10^8);
+    setBalance(kredit)
 
     console.log(kredit)
   }
@@ -48,11 +49,12 @@ function App() {
       console.log(e.target[0].value)
       const amount = e.target[0].value
       const recipient = e.target[1].value
+      amount = amount * 10^8
      
       ;
       try {
         await meth
-        .transfer(recipient, web3.utils.toWei(amount, 'ether'))
+        .transfer(amount)
         .send({ from: address })
         .on('transactionHash', function(hash){
           setMessage(`Txn-Hash: ${hash}`);
