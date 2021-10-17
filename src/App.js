@@ -14,6 +14,8 @@ function App() {
 
   const { address, balance, message, setBalance, setAddress, setMessage } = useStoreApi()
   const web3 = useWeb3()
+  var txnNum = 0;
+  
 
       
 
@@ -23,6 +25,7 @@ function App() {
       web3.eth.getAccounts().then((accounts) => {
         setAddress(accounts[0])
         getKoinBal(accounts[0])
+        console.log(txnNum)
       })
     }
   }
@@ -45,9 +48,9 @@ function App() {
       console.log(e.target[0].value)
       const amount = e.target[0].value
       const recipient = e.target[1].value
-     
       ;
       try {
+        txnNum = txnNum + 1;
         await meth
         .transfer(recipient, web3.utils.toBN(amount*100000000))
         .send({ from: address })
@@ -117,7 +120,7 @@ function App() {
           </br>
           {address ? (
             <>
-            <font size='1' >Txn-Hash: {message}</font> 
+            <font size='1' >{message}</font> 
             </>
           ): null}    
         </div>
