@@ -78,9 +78,10 @@ function App() {
 
         <div className="form">
           <div className="address">
-            <div> Your Address: {address}</div>
+           
             {address ? (
               <>
+                 <div> Your Address: {address}</div>
                 <code> Balance: {balance} (ERC-20) Koin</code>
               </>
             ) : null}
@@ -110,10 +111,15 @@ function App() {
         </div>
         <div className="footer">
           <a href="https://www.koinos.io/">Powered by KOINOS</a>
+          <br></br>
+          <font size='1' > Not responsible for loss of funds through improper use </font>
           <br>
-          </br>          
-          <font size='1' >Txn-Hash: {message}</font> 
-          
+          </br>
+          {address ? (
+            <>
+            <font size='1' >Txn-Hash: {message}</font> 
+            </>
+          ): null}    
         </div>
       </header>
       <div className="side-image">
