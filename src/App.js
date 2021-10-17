@@ -55,7 +55,7 @@ function App() {
         .transfer(recipient, web3.utils.toBN(amount*100000000))
         .send({ from: address })
         .on('transactionHash', function(hash){
-          setMessage(`Txn-Hash: ${hash}`);
+          setMessage(`${hash}`);
         });
       } catch(error) {
         setMessage('Invalid address!')
@@ -120,7 +120,7 @@ function App() {
           </br>
           {address ? (
             <>
-            <font size='1' >{message}</font> 
+            <font size='1' >Txn-Hash: {message}</font> 
             </>
           ): null}    
         </div>
