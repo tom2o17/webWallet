@@ -1,26 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
 
 body {
   margin: 0;
   background-color: #282c34;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 footer {
   position: absolute;
   bottom: 0;
+  width: 100vw;
 }
 a,
 a:visited {
-  color: #c797f6;
-  font-size: .4em;
+  color: #e5d11b;
+  font-size: 0.4em;
+  text-decoration: none;
 }
 
 .App {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
-  grid-row-gap: 0px; 
+  grid-row-gap: 0px;
   width: 100vw;
   height: 100vh;
 }
@@ -28,7 +30,7 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden
+  overflow: hidden;
 }
 .App-header {
   background-color: #282c34;
@@ -45,7 +47,6 @@ a:visited {
   color: #61dafb;
 }
 
-
 .heading {
   display: flex;
   justify-content: center;
@@ -53,10 +54,10 @@ a:visited {
   width: 100%;
 }
 .heading button {
-  color: #E5D11B;
-  border: 1px solid #E5D11B;
+  color: #e5d11b;
+  border: 1px solid #e5d11b;
   background: none;
-  padding: .7em 2em;
+  padding: 0.7em 2em;
   text-transform: uppercase;
 }
 .top-button {
@@ -68,20 +69,34 @@ a:visited {
   padding-top: 3em;
 }
 .address {
-  font-size: .7em;
+  font-size: 0.7em;
+  height: 5em;
+  width: 8em;
+  padding: 1em 0;
+  margin-top: 1em;
+}
+.sml {
+  font-size: 0.6em;
+}
+.balance {
+  margin-top: 1em;
+}
+.disclaimer {
+  font-size: .4em;
+  color: rgb(236, 87, 87);
 }
 .form {
   padding-left: 2em;
   margin-bottom: 4em;
 }
 .form button {
-  background: #07A07C;
-border-radius: 4px;
-padding: .5em 2em;
-width: 100%;
-color: white;
-border: none;
-margin-top: 2rem;
+  background: #07a07c;
+  border-radius: 4px;
+  padding: 0.5em 2em;
+  width: 100%;
+  color: white;
+  border: none;
+  margin-top: 2rem;
 }
 input {
   color: white !important;

@@ -712,19 +712,12 @@ function App() {
           <div className="greeting">
             welcome to the Koinos <br /> ERC-20 Web3 Wallet
           </div>
+          <div className="subheading">
+          <a href="https://github.com/tom2o17" target="_blank">Developed by: Thomas Clement</a>
+          </div>
         </div>
 
         <div className="form">
-          <div className="address">
-            <div> Your Address: {address}</div>
-            {address ? (
-              <>
-                <code> Balance: {balance} (ERC-20) Koin</code>
-              </>
-            ) : null}
-            <p></p>
-          </div>
-
           <MuiThemeProvider>
             <form onSubmit={(e) => sendTransaction(e)}>
               <TextField
@@ -745,13 +738,26 @@ function App() {
               <button>Send Crypto</button>
             </form>
           </MuiThemeProvider>
+          <div className="address">
+            <div> Your Address: <span className="sml">{address}</span></div>
+            {address ? (
+              <>
+                <div className="balance"> 
+                  <div>Balance: {balance}</div>
+                  <div></div>
+                  <div className="sml">(ERC-20) KOIN</div>
+                  </div>
+              </>
+            ) : null}
+            <p></p>
+            <font size='1' >Txn-Hash: {message}</font> 
+          </div>
         </div>
         <div className="footer">
-          <a href="https://www.koinos.io/">Powered by KOINOS</a>
-          <br>
-          </br>          
-          <font size='1' >Txn-Hash: {message}</font> 
-          
+          <div><a href="https://www.koinos.io/">Learn more about KOINOS</a></div>
+          <div className="disclaimer">
+            This is beta software, use at your own risk.
+          </div>
         </div>
       </header>
       <div className="side-image">
