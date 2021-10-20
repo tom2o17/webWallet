@@ -116,3 +116,13 @@ input {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 880px) {
+  .form {
+    padding-left: 0;
+  }
+  .App-header {
+    padding: 0 1em;
+  }
+}
+
