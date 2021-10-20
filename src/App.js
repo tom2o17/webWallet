@@ -104,18 +104,20 @@ function App() {
             </form>
           </MuiThemeProvider>
           <div className="address">
-            <div> Your Address: <span className="sml">{address}</span></div>
+           
             {address ? (
+              
               <>
+                <div> Your Address: <span className="sml">{address}</span></div>
                 <div className="balance"> 
                   <div>Balance: {balance}</div>
                   <div></div>
                   <div className="sml">(ERC-20) KOIN</div>
                   </div>
+                  <p></p>
+                <font size='1' >Txn-Hash: {message}</font> 
               </>
             ) : null}
-            <p></p>
-            <font size='1' >Txn-Hash: {message}</font> 
           </div>
         </div>
         <div className="footer">
